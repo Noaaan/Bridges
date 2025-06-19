@@ -1,0 +1,121 @@
+plugins {
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.80' apply false
+}
+
+def javaVersion = 21
+
+def ENV = System.getenv()
+version = mod_version
+group = mod_group_id
+
+allprojects {}
+
+subprojects {
+	apply plugin: 'java-library'
+    project.group = rootProject.group
+    project.version = rootProject.version
+	
+    tasks.build.mustRunAfter tasks.clean
+    base {
+        archivesName.set(mod_id)
+    }
+    version = "${project.name}-${rootProject.mod_version}+${rootProject.minecraft_version}"
+
+    repositories {
+        maven { url "https://www.cursemaven.com" }
+        maven { url "https://api.modrinth.com/maven/" }
+    }
+	
+    dependencies {
+        compileOnly "org.jetbrains:annotations:${jetbrains_annotations_version}"
+    }
+	
+    processResources {
+        filteringCharset "UTF-8"
+
+        def expandProps = [
+                "version"              : project.version,
+                "maven_group_id"       : project.mod_group_id,
+                "mod_id"               : project.mod_id,
+                "mod_display_name"     : project.mod_name,
+                "mod_description"      : project.mod_description,
+                "mod_author"           : project.mod_author,
+                "mod_credits"          : project.mod_credits,
+                "sources_url"          : project.sources_url,
+                "issues_url"           : project.issues_url,
+                "homepage_url"         : project.homepage_url,
+                "license_url"          : project.license_url,
+                "license"              : project.license,
+                "logo_neoforge"        : project.license,
+                "logo_fabric"          : project.license,
+
+                "minecraft_version"    : project.minecraft_version,
+                "neoforge_version"     : project.neoforge_version,
+                "fabric_loader_version": project.fabric_loader_version,
+                "java_version"         : "${javaVersion}",
+        ]
+
+		// You can add 'pack.mcmeta' here, if you are distributing a datapack
+        filesMatching(['*.mod.json', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
+            expand expandProps
+        }
+        inputs.properties(expandProps)
+    }
+	
+    java {
+        if (JavaVersion.current() < JavaVersion.toVersion(javaVersion)) {
+            toolchain {
+                languageVersion = JavaLanguageVersion.of(javaVersion)
+            }
+        } else {
+            sourceCompatibility = JavaVersion.toVersion(javaVersion)
+            targetCompatibility = JavaVersion.toVersion(javaVersion)
+        }
+
+        withSourcesJar()
+		//withJavadocJar()
+    }
+	
+	javadoc {
+        // make javadoc not throw on mixin's '@reason'
+        options.tags = ["reason"]
+    }
+	
+    jar {
+        def licenseFile = rootProject.file("LICENSE.txt")
+        inputs.file(licenseFile)
+
+        from(licenseFile) {
+            rename { "LICENSE.txt" }
+        }
+    }
+	
+    sourcesJar {
+        def licenseFile = rootProject.file("LICENSE.txt")
+        inputs.file(licenseFile)
+
+        from(licenseFile) {
+            rename { "LICENSE.txt" }
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = "UTF-8"
+        options.release.set(javaVersion)
+    }
+
+	
+	//tasks.named('wrapper', Wrapper).configure {
+	//	distributionType = Wrapper.DistributionType.BIN
+	//}
+
+	// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
+	idea {
+		module {
+			downloadSources = true
+			downloadJavadoc = true
+		}
+	}
+}
