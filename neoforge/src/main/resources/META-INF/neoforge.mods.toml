@@ -1,0 +1,14 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+    modId="${mod_id}"
+    version="${version}"
+    displayName="${mod_display_name}"
+    displayURL="${homepage_url}"
+    authors="${mod_author}"
+    credits="${mod_credits}"
+    description='''${mod_description}'''
+    logoFile="${logo_neoforge}"
+    logoBlur=false

@@ -21,7 +21,7 @@ subprojects {
     base {
         archivesName.set(mod_id)
     }
-    version = "${project.name}-${rootProject.mod_version}+${rootProject.minecraft_version}"
+    version = "${rootProject.mod_version}+${rootProject.minecraft_version}-${project.name}"
 
     repositories {
         maven { url "https://www.cursemaven.com" }
