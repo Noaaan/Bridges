@@ -2,7 +2,6 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
-// TODO - Verify for 1.21.1
 // Vanilla depends on ASM 9.3, MDG makes that a 'strict' version constraint,
 // but Mixin and MixinExtras needs newer ASM so we override that here.
 configurations.configureEach {
@@ -28,6 +27,11 @@ dependencies {
     compileOnly "net.fabricmc:sponge-mixin:${project.mixin_version}"
     compileOnly "io.github.llamalad7:mixinextras-common:${project.mixin_extras_version}"
     annotationProcessor "io.github.llamalad7:mixinextras-common:${project.mixin_extras_version}"
+    jarJar(implementation("com.github.dotnomi:fabric-dependency-injection:1.0.0")) {
+        version {
+            strictly '[1.0.0,)'
+        }
+    }
 }
 
 neoForge {

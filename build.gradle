@@ -1,7 +1,7 @@
 plugins {
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.80' apply false
+    id 'net.neoforged.moddev' version '2.0.106' apply false
 }
 
 def javaVersion = 21
@@ -24,8 +24,8 @@ subprojects {
     version = "${rootProject.mod_version}+${rootProject.minecraft_version}-${project.name}"
 
     repositories {
-        maven { url "https://www.cursemaven.com" }
         maven { url "https://api.modrinth.com/maven/" }
+        maven { url "https://jitpack.io" }
     }
 	
     dependencies {
@@ -75,7 +75,6 @@ subprojects {
         }
 
         withSourcesJar()
-		//withJavadocJar()
     }
 	
 	javadoc {
@@ -106,16 +105,11 @@ subprojects {
         options.release.set(javaVersion)
     }
 
-	
-	//tasks.named('wrapper', Wrapper).configure {
-	//	distributionType = Wrapper.DistributionType.BIN
-	//}
-
 	// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 	idea {
 		module {
-			downloadSources = true
-			downloadJavadoc = true
+			downloadSources = false
+			downloadJavadoc = false
 		}
 	}
 }

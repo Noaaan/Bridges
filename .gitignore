@@ -24,3 +24,4 @@ run
 deps
 common/src/main/generated
 CHANGELOG_OLD.md
+.vscode
