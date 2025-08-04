@@ -27,11 +27,6 @@ dependencies {
     compileOnly "net.fabricmc:sponge-mixin:${project.mixin_version}"
     compileOnly "io.github.llamalad7:mixinextras-common:${project.mixin_extras_version}"
     annotationProcessor "io.github.llamalad7:mixinextras-common:${project.mixin_extras_version}"
-    jarJar(implementation("com.github.dotnomi:fabric-dependency-injection:1.0.0")) {
-        version {
-            strictly '[1.0.0,)'
-        }
-    }
 }
 
 neoForge {

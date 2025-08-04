@@ -30,6 +30,8 @@ subprojects {
 	
     dependencies {
         compileOnly "org.jetbrains:annotations:${jetbrains_annotations_version}"
+
+        implementation("com.github.dotnomi:fabric-dependency-injection:1.0.0")
     }
 	
     processResources {
