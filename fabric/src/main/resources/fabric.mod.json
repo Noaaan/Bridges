@@ -21,9 +21,6 @@
   "entrypoints": {
     "main": [
       "com.mythicmetals.bridges.FabricMain"
-    ],
-    "bridges_module": [
-      "com.mythicmetals.bridges.content.mythicmetals.MythicMetalsBridge"
     ]
   },
   "__mixins": [
