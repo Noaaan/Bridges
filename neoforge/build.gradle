@@ -6,12 +6,6 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
-dependencies {
-    compileOnly(project(':common')) {
-        transitive = false
-    }
-}
-
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
@@ -76,6 +70,14 @@ neoForge {
             programArguments.add('--nogui')
         }
     }
+}
+
+dependencies {
+    implementation(project(':common')) {
+        transitive = false
+    }
+
+    jarJar(additionalRuntimeClasspath("com.github.dotnomi:fabric-dependency-injection:1.0.0"))
 }
 
 tasks.named("compileJava", JavaCompile) {

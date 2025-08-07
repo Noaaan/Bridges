@@ -8,5 +8,5 @@ public interface Bridge {
 
     void initialize();
 
-    boolean shouldInitialize(PlatformHelper helper);
+    boolean shouldInitialize();
 }

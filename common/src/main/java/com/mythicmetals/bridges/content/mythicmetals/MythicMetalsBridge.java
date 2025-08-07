@@ -6,8 +6,11 @@ import com.mythicmetals.bridges.api.Bridge;
 
 public class MythicMetalsBridge implements Bridge {
 
+    private final PlatformHelper helper;
+
     @ModInject
-    public MythicMetalsBridge() {
+    public MythicMetalsBridge(PlatformHelper helper) {
+        this.helper = helper;
     }
 
     @Override
@@ -17,13 +20,13 @@ public class MythicMetalsBridge implements Bridge {
 
     @Override
     public void initialize() {
+        MythicMetalsItems.register();
         System.out.println("Mythic Metals is loaded!");
     }
 
     @Override
-    public boolean shouldInitialize(PlatformHelper helper) {
+    public boolean shouldInitialize() {
         System.out.println("Attempting to load Bridge for " + getName());
-        if (helper == null) return true; // TODO - Remove this
         return helper.isModLoaded("mythicmetals");
     }
 }
