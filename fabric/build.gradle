@@ -35,6 +35,15 @@ dependencies {
     modRuntimeOnly("maven.modrinth:modmenu:${rootProject.mod_menu}") {
         transitive = false
     }
+
+    modImplementation("io.wispforest:accessories-fabric:${project.accessories_version}")
+    implementation("org.reflections:reflections:0.10.2")
+
+    include("com.github.dotnomi:fabric-dependency-injection:1.0.0")
+    // TODO - Is there a particular reason why I need to include both of these on Fabric, but only reflections on NeoForge?
+    include("org.reflections:reflections:0.10.2")
+    include("org.javassist:javassist:3.28.0-GA")
+    include("dev.yumi.mc.core:yumi-mc-foundation:1.0.0-alpha.7+1.21.1")
 }
 
 loom {
