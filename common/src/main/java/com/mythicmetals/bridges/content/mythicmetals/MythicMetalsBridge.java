@@ -18,12 +18,10 @@ public class MythicMetalsBridge implements Bridge {
     @Override
     public void initialize() {
         MythicMetalsItems.register();
-        System.out.println("Mythic Metals is loaded!");
     }
 
     @Override
     public boolean shouldInitialize() {
-        System.out.println("Attempting to load Bridge for " + getName());
         return YumiMods.get().isModLoaded("mythicmetals");
     }
 }

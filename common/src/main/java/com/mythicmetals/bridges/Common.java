@@ -25,8 +25,12 @@ public class Common {
             LOGGER.warning("[BRIDGES] No bridges found!");
         }
         for (Bridge bridge : loader) {
+            System.out.println("[BRIDGES] Attempting to load Bridge: " + bridge.getName());
             if (bridge.shouldInitialize()) {
+                System.out.println("[BRIDGES] Now loading Bridge: " + bridge.getName());
                 bridge.initialize();
+            } else {
+                System.out.println("[BRIDGES] Bridge could not be loaded");
             }
         }
     }
