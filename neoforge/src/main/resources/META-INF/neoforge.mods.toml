@@ -13,5 +13,5 @@ license="MIT"
     logoFile="${logo_neoforge}"
     logoBlur=false
 
-[modproperties."${mod_id}"."yumi:entrypoints"]
+[modproperties.${mod_id}."yumi:entrypoints"]
     "yumi:init"="com.mythicmetals.bridges.NeoMain"
