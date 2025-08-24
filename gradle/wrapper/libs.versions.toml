@@ -1,0 +1,6 @@
+# TODO - Fill!
+[versions]
+yumi-mc-foundation = "1.0.0-alpha.7+1.21.1"
+
+[libraries]
+yumi-mc-foundation = {module = "dev.yumi.mc.core:yumi-mc-foundation", version.ref = "yumi-mc-foundation"}
