@@ -1,11 +1,12 @@
 package com.mythicmetals.bridges;
 
-import net.fabricmc.api.ModInitializer;
+import dev.yumi.mc.core.api.ModContainer;
+import dev.yumi.mc.core.api.entrypoint.ModInitializer;
 
 public class FabricMain implements ModInitializer {
 
     @Override
-    public void onInitialize() {
+    public void onInitialize(ModContainer mod) {
         Common.init();
     }
 }

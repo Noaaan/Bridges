@@ -19,7 +19,7 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "yumi:init": [
       "com.mythicmetals.bridges.FabricMain"
     ]
   },

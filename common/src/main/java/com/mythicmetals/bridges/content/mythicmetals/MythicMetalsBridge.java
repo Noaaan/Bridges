@@ -6,11 +6,16 @@ import com.mythicmetals.bridges.api.Bridge;
 
 public class MythicMetalsBridge implements Bridge {
 
-    private final PlatformHelper helper;
+    private PlatformHelper platformHelper;
+
+    // TODO - Remove once migrating away from service loader
+    public MythicMetalsBridge() {
+
+    }
 
     @ModInject
-    public MythicMetalsBridge(PlatformHelper helper) {
-        this.helper = helper;
+    public MythicMetalsBridge(PlatformHelper platformHelper) {
+        this.platformHelper = platformHelper;
     }
 
     @Override
@@ -27,6 +32,10 @@ public class MythicMetalsBridge implements Bridge {
     @Override
     public boolean shouldInitialize() {
         System.out.println("Attempting to load Bridge for " + getName());
-        return helper.isModLoaded("mythicmetals");
+        if (platformHelper == null) {
+            System.out.println("platformhelper not available");
+            return true;
+        }
+        return platformHelper.isModLoaded("mythicmetals");
     }
 }

@@ -26,12 +26,19 @@ subprojects {
     repositories {
         maven { url "https://api.modrinth.com/maven/" }
         maven { url "https://jitpack.io" }
+        mavenCentral()
     }
 	
     dependencies {
         compileOnly "org.jetbrains:annotations:${jetbrains_annotations_version}"
 
         implementation("com.github.dotnomi:fabric-dependency-injection:1.0.0")
+
+        implementation("dev.yumi.mc.core:yumi-mc-foundation:1.0.0-alpha.7+1.21.1") {
+            capabilities {
+                requireCapability("dev.yumi.mc.core:yumi-mc-foundation-mojmap")
+            }
+        }
     }
 	
     processResources {

@@ -7,7 +7,12 @@ import net.fabricmc.loader.api.FabricLoader;
 
 public class FrostifulBridge implements Bridge {
 
-    private final PlatformHelper helper;
+    private PlatformHelper helper;
+
+    // TODO - Remove after dep-injection lib is updated
+    public FrostifulBridge() {
+
+    }
 
     @ModInject
     public FrostifulBridge(PlatformHelper helper) {

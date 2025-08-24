@@ -1,13 +1,11 @@
 package com.mythicmetals.bridges;
 
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
+import dev.yumi.mc.core.api.entrypoint.ModInitializer;
 
-@Mod(Common.MOD_ID)
-public class NeoMain {
+public class NeoMain implements ModInitializer {
 
-    public NeoMain(IEventBus modbus, ModContainer container) {
+    @Override
+    public void onInitialize(dev.yumi.mc.core.api.ModContainer modContainer) {
         Common.init();
     }
 }
