@@ -34,7 +34,7 @@ subprojects {
         compileOnly "org.jetbrains:annotations:${jetbrains_annotations_version}"
 
         compileOnly "org.reflections:reflections:0.10.2"
-        implementation("com.github.dotnomi:fabric-dependency-injection:1.0.0")
+        implementation("com.github.dotnomi:fabric-dependency-injection:1.1.0")
 
         implementation(libs.yumi.mc.foundation) {
             capabilities {

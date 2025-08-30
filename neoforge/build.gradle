@@ -84,7 +84,7 @@ dependencies {
     }
 
     jarJar("org.reflections:reflections:0.10.2")
-    jarJar(additionalRuntimeClasspath("com.github.dotnomi:fabric-dependency-injection:1.0.0"))
+    jarJar(additionalRuntimeClasspath("com.github.dotnomi:fabric-dependency-injection:1.1.0"))
     jarJar("dev.yumi.mc.core:yumi-mc-foundation:1.0.0-alpha.7+1.21.1") {
         capabilities {
             requireCapability("dev.yumi.mc.core:yumi-mc-foundation-mojmap")

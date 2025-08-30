@@ -1,14 +1,11 @@
 package com.mythicmetals.bridges.content.spellbound_weapons;
 
+import com.dotnomi.fabricdependencyinjection.annotation.ModScoped;
 import com.mythicmetals.bridges.api.Bridge;
 import dev.yumi.mc.core.api.YumiMods;
 
+@ModScoped
 public class SpellboundWeaponsBridge implements Bridge {
-
-    // TODO - Remove once migrating away from service loader
-    public SpellboundWeaponsBridge() {
-
-    }
 
     @Override
     public String getName() {

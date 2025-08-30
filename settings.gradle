@@ -13,4 +13,4 @@ plugins {
 rootProject.name = 'bridges'
 
 include 'common', 'fabric', 'neoforge'
-includeBuild("version_catalog")
+includeBuild 'version_catalog'
