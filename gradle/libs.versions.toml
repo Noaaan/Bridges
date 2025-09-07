@@ -1,5 +1,37 @@
 [versions]
+minecraft = "1.21.8"
+fabric-dependency-injection = "1.1.0"
 yumi-mc-foundation = "1.0.0-alpha.7+1.21.1"
+parchment = "2025.07.18"
+neoform = "1.21.8-20250717.133445"
+mixin = "0.15.4+mixin.0.8.7"
+mixin-extras = "0.4.1"
+asm = "9.7"
+accessories = "1.3.3-beta+1.21.8"
+modmenu = "15.0.0-beta.1"
 
 [libraries]
-yumi-mc-foundation = {module = "dev.yumi.mc.core:yumi-mc-foundation", version.ref = "yumi-mc-foundation"}
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+yumi-mc-foundation = { module = "dev.yumi.mc.core:yumi-mc-foundation", version.ref = "yumi-mc-foundation" }
+dependency-injection = { module = "com.github.dotnomi:fabric-dependency-injection", version.ref = "fabric-dependency-injection" }
+mixin = { module = "net.fabricmc:sponge-mixin", version.ref = "mixin" }
+mixin-extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin-extras" }
+asm-core = { group = "org.ow2.asm", name = "asm", version.ref = "asm" }
+asm-analysis = { group = "org.ow2.asm", name = "asm-analysis", version.ref = "asm" }
+asm-commons = { group = "org.ow2.asm", name = "asm-commons", version.ref = "asm" }
+asm-tree = { group = "org.ow2.asm", name = "asm-tree", version.ref = "asm" }
+asm-util = { group = "org.ow2.asm", name = "asm-util", version.ref = "asm" }
+endec = { group = "io.wispforest", name = "endec", version = "0.1.11"}
+
+# Fabric
+parchment-loom = { module = "org.parchmentmc.data:parchment-1.21.8", version.ref = "parchment" }
+
+# Module dependents
+accessories-fabric = {group = "io.wispforest", name = "accessories-fabric", version.ref = "accessories"}
+accessories-neoforge = {group = "io.wispforest", name = "accessories-neoforge", version.ref = "accessories"}
+modmenu = {group = "maven.modrinth", name = "modmenu", version.ref = "modmenu"}
+owo-fabric = {group = "io.wispforest", name = "owo-lib", version = "0.12.22+1.21.8"}
+owo-neoforge = {group = "io.wispforest", name = "owo-lib-neoforge", version = "0.12.23+1.21.8"}
+
+[bundles]
+asm = ["asm-core", "asm-analysis", "asm-commons", "asm-tree", "asm-util"]

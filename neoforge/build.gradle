@@ -12,8 +12,8 @@ neoForge {
     version = project.neoforge_version
 
     parchment {
-        minecraftVersion = project.parchment_minecraft_version
-        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = libs.versions.minecraft.get()
+        mappingsVersion = libs.versions.parchment.get()
     }
 
     def atFile = project(":common").file("src/main/resources/META-INF/accesstransformer.cfg")
@@ -77,15 +77,18 @@ dependencies {
         transitive = false
     }
 
-    api("dev.yumi.mc.core:yumi-mc-foundation:1.0.0-alpha.7+1.21.1") {
+    api(libs.yumi.mc.foundation) {
         capabilities {
             requireCapability("dev.yumi.mc.core:yumi-mc-foundation-mojmap")
         }
     }
 
+
+    implementation(libs.owo.neoforge)
+
     jarJar("org.reflections:reflections:0.10.2")
-    jarJar(additionalRuntimeClasspath("com.github.dotnomi:fabric-dependency-injection:1.1.0"))
-    jarJar("dev.yumi.mc.core:yumi-mc-foundation:1.0.0-alpha.7+1.21.1") {
+    jarJar(additionalRuntimeClasspath(libs.dependency.injection.get()))
+    jarJar(libs.yumi.mc.foundation) {
         capabilities {
             requireCapability("dev.yumi.mc.core:yumi-mc-foundation-mojmap")
         }

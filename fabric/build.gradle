@@ -17,10 +17,10 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    minecraft(libs.minecraft)
     mappings(loom.layered {
         it.officialMojangMappings()
-        it.parchment("org.parchmentmc.data:parchment-${project.parchment_minecraft_version}:${project.parchment_mappings_version}@zip")
+        it.parchment(libs.parchment.loom)
     })
     compileOnly(project(":common")) {
         transitive = false
@@ -29,21 +29,23 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-    modCompileOnly("maven.modrinth:modmenu:${rootProject.mod_menu}") {
+    modCompileOnly(libs.modmenu) {
         transitive = false
     }
-    modRuntimeOnly("maven.modrinth:modmenu:${rootProject.mod_menu}") {
+    modRuntimeOnly(libs.modmenu) {
         transitive = false
     }
 
-    modImplementation("io.wispforest:accessories-fabric:${project.accessories_version}")
-    implementation("org.reflections:reflections:0.10.2")
+    modImplementation(libs.accessories.fabric)
+    modImplementation(libs.dependency.injection)
 
-    include("com.github.dotnomi:fabric-dependency-injection:1.1.0")
+    include(libs.dependency.injection)
+    modImplementation(libs.owo.fabric)
+    //implementation("org.reflections:reflections:0.10.2")
     // TODO - Is there a particular reason why I need to include both of these on Fabric, but only reflections on NeoForge?
     include("org.reflections:reflections:0.10.2")
     include("org.javassist:javassist:3.28.0-GA")
-    include("dev.yumi.mc.core:yumi-mc-foundation:1.0.0-alpha.7+1.21.1")
+    include(libs.yumi.mc.foundation)
 }
 
 loom {

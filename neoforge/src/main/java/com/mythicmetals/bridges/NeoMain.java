@@ -10,7 +10,8 @@ public class NeoMain implements ModInitializer {
 
     @Override
     public void onInitialize(ModContainer modContainer) {
-        ModInjector.initialize(Common.MOD_ID, Common.class);
+        // FIXME - Reflections does not pick up on the Bridges for some reason
+        ModInjector.initialize(Common.MOD_ID, this);
         Common.init();
     }
 }
